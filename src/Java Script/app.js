@@ -5,6 +5,10 @@ let ctx = null;
 let slope = 2 * Math.PI / 360 * 60;
 let pills = [];
 
+// colors: light green, pink, orange, blue, red, purple , yellow
+
+let colors = ['#dee610', '#357bde', '#d92727', '#2fd1fa', '#fab132', '#ee23fc', '#6cff3b'];
+
 let getRandomArbitrary = (min, max) => {
     return Math.random() * (max - min) + min;
 }
@@ -23,13 +27,14 @@ let init = () => {
         ctx.canvas.height = window.innerHeight;
         ctx.canvas.width = window.innerWidth;
         // Populate Pills array with values
-        for(let i = 1; i <= 25; ++i){
+        for(let i = 1; i <= 30; ++i){
             pills.push({
                 c1: getRandomArbitrary(-25,ctx.canvas.width + 5),
                 c2: getRandomArbitrary(-25,ctx.canvas.height + 5),
-                omega: getRandomArbitrary(0.5,3),
+                omega: getRandomArbitrary(0.5,2),
                 speed: getRandomArbitrary(0.5,1.1),
-                angle: getRandomArbitrary(0,361)
+                angle: getRandomArbitrary(0,361),
+                color: colors[getRandomInt(0,6)]
             });
         }
         window.requestAnimationFrame(doAnimation);
@@ -43,11 +48,11 @@ let drawShape = (x,y,angle,color) => {
     ctx.rotate(angle);
     // Draw The Shape ---->
     ctx.beginPath();
-    ctx.moveTo(20,7);
-    ctx.lineTo(-20,7);
-    ctx.arc(-20,0,7,Math.PI / 2,3 * Math.PI / 2,false);
-    ctx.lineTo(20,-7);
-    ctx.arc(20,0,7,-Math.PI / 2,-3 * Math.PI / 2,false);
+    ctx.moveTo(15,8);
+    ctx.lineTo(-15,8);
+    ctx.arc(-15,0,8,Math.PI / 2,3 * Math.PI / 2,false);
+    ctx.lineTo(15,-8);
+    ctx.arc(15,0,8,-Math.PI / 2,-3 * Math.PI / 2,false);
     ctx.fill();
     // Restore the initial canavas state
     ctx.restore();
@@ -82,7 +87,7 @@ let doAnimation = () => {
             currPill.c2 = choice[randomChoice].c2;
         }
         let currRadian = ((2 * Math.PI) / 360) * currPill.angle;
-        drawShape(currPill.c1, currPill.c2, currRadian,'blue');
+        drawShape(currPill.c1, currPill.c2, currRadian, currPill.color);
     }   
     //                      <-- Test Code -->
     // alpha = (alpha + 5) % 360;
@@ -94,6 +99,14 @@ let doAnimation = () => {
     // let currRadian = ((2 * Math.PI) / 360) * alpha;
     // drawShape(c1,c2,currRadian,'blue');
     window.requestAnimationFrame(doAnimation);
+}
+
+window.onresize = () => {
+    ctx.canvas.width = window.innerWidth;
+    ctx.canvas.height = window.innerHeight;
+    // window.cancelAnimationFrame(ID); the above approach looks better, hence not using this
+    // pills = [];
+    // init();
 }
 
 init();
