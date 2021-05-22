@@ -2,7 +2,7 @@ let canvas = null;
 let ctx = null;
 // let alpha = Math.random() * 360 + 1;
 // let c1 = 100, c2 = 100;
-let slope = 2 * Math.PI / 360 * 60;
+let slope = 2 * Math.PI / 360 * 70;
 let pills = [];
 
 // colors: light green, pink, orange, blue, red, purple , yellow
@@ -65,12 +65,12 @@ let doAnimation = () => {
         currPill.c1 = currPill.c1+ Math.cos(slope) * currPill.speed;
         currPill.c2 = currPill.c2 + Math.sin(slope) * currPill.speed;
         currPill.angle = (currPill.angle + currPill.omega) % 360;
-        if(currPill.c1> ctx.canvas.width + 25 || currPill.c2 > ctx.canvas.height + 25){
+        if(currPill.c1> ctx.canvas.width + 20 || currPill.c2 > ctx.canvas.height + 20){
             let choice = [];
             // (x, -y)
             choice.push({
                 c1: getRandomArbitrary(0, ctx.canvas.width - 10),
-                c2: getRandomArbitrary(-100,-25)
+                c2: getRandomArbitrary(-100,-20)
             });
             // (-x, -y)
             // choice.push({
@@ -79,7 +79,7 @@ let doAnimation = () => {
             // });
             // (-x, y)
             choice.push({
-                c1: getRandomArbitrary(-100,-25),
+                c1: getRandomArbitrary(-100,-20),
                 c2: getRandomArbitrary(0, ctx.canvas.height - 10)
             });
             let randomChoice = getRandomInt(0,1);
