@@ -9,4 +9,86 @@ body {
 
 #animated_background {
     position: fixed;
+    z-index: -1;
+}
+
+#myimagediv {
+    height: 300px;
+    width: 100%;
+}
+
+#myimage {
+    height: 96px;
+    width: 96px;
+    object-fit: cover;
+    border-radius: 50%;
+    z-index: 1;
+    margin: 0 auto;
+    display: block;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    box-sizing: unset;
+}
+#labels a {
+    display: block;
+    margin: 0 auto;
+    width: 80vw;
+    height: 6vh;
+    border-radius: 22px 22px 22px 22px;
+    margin-top: 30px;
+}
+
+#labels a:hover {
+    background-color: rgba(255,255,255,0.6);
+    transition:cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+#labels a  span {
+    color: black;
+    font-weight: normal;
+}
+
+#labels {
+    position: absolute;
+    top: 25%;
+    left: 10%;
+}
+#linkedin {
+    font-size: 30px;
+    color: rgb(40,103,178);
+    float: left;
+    opacity:1;
+}
+
+#github {
+    font-size: 30px;
+    color: #211F1F;
+    float: left;
+}
+
+#resume {
+    font-size: 30px;
+    color: black;
+    float: left;
+}
+
+#ext {
+    font-size: 30px;
+    color: black;
+    float: left;
+}
+#forum {
+    font-size: 30px;
+    color: black;
+    float: left;
+}
+
+@media only screen and (min-width: 768px){
+    #labels a{
+        width: 50vw;
+    }
+
+    #labels {
+        left: 25%;
+    }
 }
