@@ -92,3 +92,10 @@ body {
         left: 25%;
     }
 }
+
+#name {
+    position: absolute;
+    top: 26vh;
+    left: 43vw;
+    font-size: large;
+}
