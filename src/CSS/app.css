@@ -94,8 +94,8 @@ body {
 }
 
 #name {
+    width: 100%;
+    text-align: center;
     position: absolute;
-    top: 26vh;
-    left: 43vw;
-    font-size: large;
+    top: 200px;
 }
