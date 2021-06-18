@@ -50,8 +50,8 @@ body {
 
 #labels {
     position: absolute;
-    top: 25%;
-    left: 10%;
+    top: 30vh;
+    left: 10vw;
 }
 #linkedin {
     font-size: 30px;

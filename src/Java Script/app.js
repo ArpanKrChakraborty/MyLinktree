@@ -5,6 +5,8 @@ let ctx = null;
 let slope = 2 * Math.PI / 360 * 70;
 let pills = [];
 
+let ID = -1;
+
 // colors: light green, pink, orange, blue, red, purple , yellow
 
 let colors = ['#dee610', '#357bde', '#d92727', '#2fd1fa', '#fab132', '#ee23fc', '#6cff3b'];
@@ -26,8 +28,9 @@ let init = () => {
         ctx = canvas.getContext('2d');
         ctx.canvas.height = window.innerHeight;
         ctx.canvas.width = window.innerWidth;
+        console.log(ctx.canvas.height,ctx.canvas.width);
         // Populate Pills array with values
-        for(let i = 1; i <= 30; ++i){
+        for(let i = 1; i <= Number(window.innerWidth / 100) + 10; ++i){
             pills.push({
                 c1: getRandomArbitrary(-25,ctx.canvas.width + 5),
                 c2: getRandomArbitrary(-25,ctx.canvas.height + 5),
@@ -98,15 +101,15 @@ let doAnimation = () => {
     // }
     // let currRadian = ((2 * Math.PI) / 360) * alpha;
     // drawShape(c1,c2,currRadian,'blue');
-    window.requestAnimationFrame(doAnimation);
+    ID = window.requestAnimationFrame(doAnimation);
 }
 
 window.onresize = () => {
-    ctx.canvas.width = window.innerWidth;
-    ctx.canvas.height = window.innerHeight;
-    // window.cancelAnimationFrame(ID); the above approach looks better, hence not using this
-    // pills = [];
-    // init();
+    // ctx.canvas.width = window.innerWidth;
+    // ctx.canvas.height = window.innerHeight;
+    window.cancelAnimationFrame(ID); // the above approach looks better, hence not using this
+    pills = [];
+    init();
 }
 
 init();
